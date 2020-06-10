@@ -14,9 +14,9 @@ describe Splitta::WordTokenizer do
   end
 
   specify 'Separate punctuation (except period) from words' do
-    expect_tokenize %['w(x)&♥[y]!] => %[' w ( x ) & ♥ [ y ] !],
-                    %[)s] => %[) s],
-                    %(s{) => %(s {),
+    expect_tokenize %['w(x)&♥[y]!]  => %[' w ( x ) & ♥ [ y ] !],
+                    %[)s]           => %[) s],
+                    %(s{)           => %(s {),
                     %(-s1 -s2 --s3) => %(- s1 - s2 -- s3)
   end
 
