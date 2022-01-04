@@ -12,25 +12,9 @@ RDoc::Task.new do |rdoc|
 end
 
 def unpickle(file)
-  require 'rubypython'
-
-  RubyPython.run do
-    cPickle = import 'cPickle'
-    gzip = import 'gzip'
-
-    io = gzip.open(file, 'rb')
-    data = cPickle.load(io)
-    io.close()
-
-    data = data.rubify
-    if data.keys.first.is_a?(RubyPython::Tuple)
-      data = data.each_with_object({}) do |(k, v), h|
-        h[k.to_a] = v
-      end
-    end
-
-    return data
-  end
+  out, status = Open3.capture2e("bin/pickle2json #{file.inspect}")
+  abort out unless status.success?
+  JSON.parse(out).to_h
 end
 
 def gzip_dump(file, obj)
@@ -44,12 +28,19 @@ def gzip_dump(file, obj)
 end
 
 task :unpickle, [:file] do |_t, args|
+  require 'json'
+  require 'open3'
+
   files = Dir[args[:file] || 'data/src/**/*'].select do |f|
     File.file?(f)
   end
 
-  files.each do |src|
-    puts "Unpickling #{src} ..."
-    gzip_dump(src.sub('/src/', '/'), unpickle(src))
-  end
+  files.map do |src|
+    fork do
+      puts "Unpickling #{src} ..."
+      gzip_dump(src.sub('/src/', '/'), unpickle(src))
+    end
+  end.map do |pid|
+    Process.wait2(pid).last
+  end.all?(&:success?) or exit(1)
 end

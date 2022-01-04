@@ -24,6 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rubocop'
-  spec.add_development_dependency 'rubypython'
   spec.add_development_dependency 'simplecov', '~> 0.17.0' # 0.18 not supported by code climate
 end
