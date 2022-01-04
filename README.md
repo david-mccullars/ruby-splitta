@@ -8,9 +8,10 @@
 ## Status
 
 [![Gem Version](https://badge.fury.io/rb/splitta.svg)](https://badge.fury.io/rb/splitta)
-[![Travis Build Status](https://travis-ci.org/david-mccullars/ruby-splitta.svg?branch=master)](https://travis-ci.org/david-mccullars/ruby-splitta)
+[![Build Status](https://github.com/david-mccullars/ruby-splitta/workflows/CI/badge.svg)](https://github.com/david-mccullars/ruby-splitta/actions?workflow=CI)
 [![Code Climate](https://codeclimate.com/github/david-mccullars/ruby-splitta/badges/gpa.svg)](https://codeclimate.com/github/david-mccullars/ruby-splitta)
 [![Test Coverage](https://codeclimate.com/github/david-mccullars/ruby-splitta/badges/coverage.svg)](https://codeclimate.com/github/david-mccullars/ruby-splitta/coverage)
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ## Description
 
