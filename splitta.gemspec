@@ -21,8 +21,16 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 3.0.0'
 
   spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'github-markup'
   spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'redcarpet'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'rubocop-rake'
+  spec.add_development_dependency 'rubocop-rspec'
   spec.add_development_dependency 'simplecov', '~> 0.17.0' # 0.18 not supported by code climate
+  spec.add_development_dependency 'yard'
+  spec.metadata = {
+    'rubygems_mfa_required' => 'true',
+  }
 end
