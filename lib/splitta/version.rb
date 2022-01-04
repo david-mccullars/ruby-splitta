@@ -1,6 +1,6 @@
 module Splitta
 
   # Current gem version
-  VERSION = '4.2.5'
+  VERSION = '5.0.0'
 
 end
