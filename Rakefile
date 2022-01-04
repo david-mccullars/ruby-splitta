@@ -1,15 +1,12 @@
 require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
+require 'yard'
 
 RSpec::Core::RakeTask.new(:spec)
 
 task default: :spec
 
-require 'rdoc/task'
-RDoc::Task.new do |rdoc|
-  rdoc.main = 'README.md'
-  rdoc.rdoc_files.include('README.md', 'lib/**/*.rb')
-end
+YARD::Rake::YardocTask.new
 
 def unpickle(file)
   out, status = Open3.capture2e("bin/pickle2json #{file.inspect}")
